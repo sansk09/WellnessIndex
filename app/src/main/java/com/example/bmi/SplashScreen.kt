@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.HandlerThread
+import android.os.Looper
 import android.view.WindowManager
 
 class SplashScreen : AppCompatActivity() {
@@ -14,10 +16,11 @@ class SplashScreen : AppCompatActivity() {
 
         // we used the postDelayed(Runnable, time) method
         // to send a message with a delayed time.
-        Handler().postDelayed({
+        Handler(Looper.myLooper()!!).postDelayed({
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }, 1100) // 3000 is
+
     }
 }
